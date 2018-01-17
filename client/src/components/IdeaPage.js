@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components'
 
+import IdeasList from './IdeasList'
+
 class IdeaPage extends Component {
 
   // We'll set up the ideas array as an empty array to begin with
@@ -80,30 +82,10 @@ class IdeaPage extends Component {
           <h1>Idea Board</h1>
           <button onClick={this.createIdea}>New Idea</button>
         </div>
-        <div>
-          {this.state.ideas.map((idea) => {
-            return (
-              <div key={idea._id}>
-
-                <input type="text"
-                       name="title"
-                       value={idea.title}
-                       onChange={(event) => this.handleChange(idea, event)}
-                       onBlur={() => {this.updateIdea(idea)}}/>
-
-                <textarea name="description"
-                          value={idea.description}
-                          onChange={(event) => this.handleChange(idea, event)}
-                          onBlur={() => {this.updateIdea(idea)}}/>
-
-                <button onClick={() => {this.deleteIdea(idea)}}>
-                  Delete Idea
-                </button>
-
-              </div>
-            )
-          })}
-        </div>
+        <IdeasList ideas={this.state.ideas}
+                   handleChange={this.handleChange}
+                   updateIdea={this.updateIdea}
+                   deleteIdea={this.deleteIdea}/>
       </div>
     )
   }
