@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import styled from 'styled-components'
 
 import IdeasList from './IdeasList'
 
@@ -72,20 +71,20 @@ class IdeaPage extends Component {
     }
   }
 
-  // Notice that our onChange and onBlur events are using some slightly new syntax:
-  // They are wrapping their callbacks in a higher-level function, so that we can
-  // pass the Idea in to the callback function later on when the event is fired
   render () {
     return (
       <div>
+
         <div>
           <h1>Idea Board</h1>
           <button onClick={this.createIdea}>New Idea</button>
         </div>
+
         <IdeasList ideas={this.state.ideas}
                    handleChange={this.handleChange}
                    updateIdea={this.updateIdea}
                    deleteIdea={this.deleteIdea}/>
+
       </div>
     )
   }
